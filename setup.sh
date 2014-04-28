@@ -2,6 +2,18 @@
 # Simple setup.sh for configuring Ubuntu 12.04 LTS EC2 instance
 # for headless setup. 
 
+#Sort out locale errors in EC2 
+cd $HOME
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+sudo locale-gen en_US.UTF-8
+sudo dpkg-reconfigure locales
+
+# Get ready for update
+sudo apt-get update
+
+
 # Install nvm: node-version manager
 # https://github.com/creationix/nvm
 sudo apt-get install -y git
@@ -26,6 +38,8 @@ sudo apt-get install -y rlwrap
 sudo add-apt-repository -y ppa:cassou/emacs
 sudo apt-get -qq update
 sudo apt-get install -y emacs24-nox emacs24-el emacs24-common-non-dfsg
+
+
 
 # Install Heroku toolbelt
 # https://toolbelt.heroku.com/debian
